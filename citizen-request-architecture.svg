@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="700" viewBox="0 0 1400 700">
+  <defs>
+    <style>
+      .title { font: 700 32px Arial, sans-serif; fill: #111; }
+      .label { font: 600 22px Arial, sans-serif; fill: #111; }
+      .sub { font: 400 17px Arial, sans-serif; fill: #333; }
+      .box { fill: #f7f9fc; stroke: #1f2937; stroke-width: 2.5; rx: 22; ry: 22; }
+      .arrow { stroke: #111827; stroke-width: 3; fill: none; marker-end: url(#arrowhead); }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <polygon points="0 0, 10 4, 0 8" fill="#111827"/>
+    </marker>
+  </defs>
+
+  <text x="700" y="60" text-anchor="middle" class="title">Citizen Request Automation System</text>
+
+  <rect x="90" y="230" width="210" height="120" class="box"/>
+  <text x="195" y="280" text-anchor="middle" class="label">Resident</text>
+  <text x="195" y="312" text-anchor="middle" class="sub">Submits issue request</text>
+
+  <rect x="360" y="230" width="240" height="120" class="box"/>
+  <text x="480" y="280" text-anchor="middle" class="label">HTML Form</text>
+  <text x="480" y="312" text-anchor="middle" class="sub">Collects request details</text>
+
+  <rect x="670" y="220" width="260" height="140" class="box"/>
+  <text x="800" y="270" text-anchor="middle" class="label">Azure Function</text>
+  <text x="800" y="302" text-anchor="middle" class="sub">Validates payload</text>
+  <text x="800" y="330" text-anchor="middle" class="sub">Creates Jira issue</text>
+
+  <rect x="1010" y="120" width="250" height="120" class="box"/>
+  <text x="1135" y="170" text-anchor="middle" class="label">Jira Service Management</text>
+  <text x="1135" y="202" text-anchor="middle" class="sub">Tracks request lifecycle</text>
+
+  <rect x="1010" y="410" width="250" height="120" class="box"/>
+  <text x="1135" y="460" text-anchor="middle" class="label">Slack</text>
+  <text x="1135" y="492" text-anchor="middle" class="sub">Notifies operations team</text>
+
+  <path d="M300 290 L360 290" class="arrow"/>
+  <path d="M600 290 L670 290" class="arrow"/>
+  <path d="M930 255 C965 240, 980 215, 1010 190" class="arrow"/>
+  <path d="M930 325 C970 350, 980 405, 1010 440" class="arrow"/>
+
+  <text x="690" y="165" class="sub">Public-sector style intake, routing, and notification flow</text>
+</svg>
