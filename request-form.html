@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Citizen Request Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 720px;
+      margin: 40px auto;
+      padding: 0 16px;
+      line-height: 1.5;
+    }
+    label {
+      display: block;
+      margin-top: 14px;
+      font-weight: bold;
+    }
+    input, select, textarea, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      box-sizing: border-box;
+    }
+    button {
+      cursor: pointer;
+      margin-top: 18px;
+    }
+    .note {
+      font-size: 0.95rem;
+      color: #444;
+    }
+  </style>
+</head>
+<body>
+  <h1>Citizen Request Form</h1>
+  <p class="note">
+    Demo form for the GovTech Citizen Request Automation System.
+    Update the <code>functionUrl</code> variable below before testing.
+  </p>
+
+  <form id="requestForm">
+    <label for="fullName">Full Name</label>
+    <input id="fullName" name="fullName" required />
+
+    <label for="email">Email</label>
+    <input id="email" name="email" type="email" required />
+
+    <label for="requestType">Request Type</label>
+    <select id="requestType" name="requestType" required>
+      <option value="">Select one</option>
+      <option>Pothole</option>
+      <option>Broken Streetlight</option>
+      <option>Missed Trash Pickup</option>
+      <option>Graffiti</option>
+      <option>Other</option>
+    </select>
+
+    <label for="location">Location</label>
+    <input id="location" name="location" required />
+
+    <label for="description">Description</label>
+    <textarea id="description" name="description" rows="6" required></textarea>
+
+    <button type="submit">Submit Request</button>
+  </form>
+
+  <pre id="output"></pre>
+
+  <script>
+    const functionUrl = "https://YOUR-FUNCTION-APP.azurewebsites.net/api/citizen-request?code=YOUR_FUNCTION_KEY";
+
+    document.getElementById("requestForm").addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const formData = new FormData(event.target);
+      const payload = Object.fromEntries(formData.entries());
+      const output = document.getElementById("output");
+
+      output.textContent = "Submitting request...";
+
+      try {
+        const response = await fetch(functionUrl, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+
+        const data = await response.json();
+        output.textContent = JSON.stringify(data, null, 2);
+      } catch (error) {
+        output.textContent = "Error: " + error.message;
+      }
+    });
+  </script>
+</body>
+</html>
